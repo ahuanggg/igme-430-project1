@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<title>Weight Loss Tracker</title>
+
+		<link rel="stylesheet" type="text/css" href="./style.css" />
+
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<!--Import Google Icon Font-->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+		<script>
+			const handleResponse = (e) => {
+				console.log('e.target = ', e.target); // here, 'e.target' is the 'xhr' object
+				console.log('e.target.response = ', e.target.response); // so that means this is a string of "joke" JSON
+				const obj = JSON.parse(e.target.response); // turn it back into an object
+				console.log('obj = ', obj);
+				// now go ahead and update #quoteContainer with the contents of the joke
+				let quoteContainer = document.querySelector('#message-div');
+
+				// this is for the single jokes
+
+				quoteContainer.innerHTML = '';
+				for (let i = 0; i < obj.length; i++) {
+					quoteContainer.innerHTML += `
+                    <p><b>${obj[i].m}</b></p>
+                    `;
+				}
+
+				// quoteContainer.innerHTML = `
+				// <p><b>Joke</b> : ${obj[0].q} </p>
+				// <p><b>Punch Line</b> : ${obj[0].a} </p>
+				// `;
+			};
+
+			const downloadJoke = (e) => {
+				// remember that an `Event` object gets passed along every time that an event handler or listener calls a function
+				// the `target` property of that event points at the element that sent the event, in this case a button
+				console.log(`An element of id=${e.target.id} was clicked!`);
+
+				let quoteURL = '';
+
+				// check if single joke or many jokes
+				if (e.target.id === 'quotebtn') {
+					quoteURL = '/random-quote';
+				}
+
+				const xhr = new XMLHttpRequest();
+				xhr.onload = handleResponse;
+				xhr.open('GET', quoteURL);
+				// with XHR, after we open a connect, but before we 'send()', we can set 1 or more HTTP request headers
+				// this isn't strictly necessary because '/random-joke' sends JSON by default
+				xhr.setRequestHeader('Accept', 'application/javascript');
+				xhr.send();
+			};
+
+			const init = () => {
+				// An Event *Handler*
+				// document.querySelector("#btnJoke").onclick = downloadJoke; // same as below, less typing, use which ever version you prefer
+
+				// An Event *Listener*
+				document.querySelector('#quotebtn').addEventListener('click', downloadJoke);
+
+				// **Actually, event handlers and listeners are NOT exactly the same in all use cases - what ARE the differences?**
+			};
+
+			window.onload = init;
+		</script>
+	</head>
+	<body>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="home.html" class="brand-logo"><i class="material-icons left">calendar_today</i></a>
+				<ul class="right hide-on-med-and-down">
+					<li>
+						<a href="#"><i class="material-icons left">tungsten</i>Daily motivation</a>
+					</li>
+					<li>
+						<a href="recipe.html"><i class="material-icons left">search</i>Search for recipies</a>
+					</li>
+					<li>
+						<a href="admin.html"><i class="material-icons left">admin_panel_settings</i>Admin</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="center-align" id="motivation-div">
+			<div class="waves-effect waves-light btn-large">
+				<a id="quotebtn"><i class="material-icons left">tungsten</i>Motivate me!</a>
+			</div>
+			<div class="center-align" id="message-div"></div>
+		</div>
+	</body>
+</html>
