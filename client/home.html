@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Weight Loss Tracker</title>
+
+		<link href="./style.css" type="text/css" rel="stylesheet" />
+		<!-- linking calendar css and js file  -->
+		<link href="./fullcalmain.css" rel="stylesheet" />
+		<script src="./fullcalmain.js"></script>
+
+		<!-- for the font family -->
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap" rel="stylesheet" />
+
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<!--Import Google Icon Font-->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<style>
+			#calendar {
+				width: 75%;
+				margin: auto;
+				padding-top: 2em;
+			}
+
+			.brand-logo {
+				left: 1em;
+			}
+
+			.nav-wrapper {
+				background-color: rgb(109, 104, 104);
+			}
+		</style>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				let calendarEl = document.querySelector('#calendar');
+				let calendar = new FullCalendar.Calendar(calendarEl, {
+					initialView: 'dayGridMonth', //sets the view
+					height: 'auto',
+					// sets the toolbar in the middle can add more if need be
+					headerToolbar: {
+						center: 'addEventButton',
+					},
+
+					// adds our own button to the toolbar
+					customButtons: {
+						addEventButton: {
+							text: 'add weight',
+							click: function () {
+								// prompts user for date, weight, and how they are feeling (description)
+								let dateStr = prompt('Enter a date in YYYY-MM-DD format');
+								let weightStr = prompt('Enter a weight in pounds');
+
+								let date = new Date(dateStr + 'T00:00:00');
+
+								if (!isNaN(date.valueOf())) {
+									// valid? if true then add event
+									calendar.addEvent({
+										title: weightStr,
+										start: date,
+										allDay: true,
+									});
+								} else {
+									// if not valid date then tell them
+									alert('Invalid date.');
+								}
+							},
+						},
+					},
+					//adding some custom events
+					events: [
+						{
+							title: '250', // a property!
+							start: '2021-02-10', // a property!
+							allDay: true,
+						},
+						{
+							title: '249', // a property!
+							start: '2021-02-11', // a property!
+							allDay: true,
+						},
+						{
+							title: '248', // a property!
+							start: '2021-02-12', // a property!
+							allDay: true,
+						},
+						{
+							title: '247', // a property!
+							start: '2021-02-13', // a property!
+							allDay: true,
+						},
+						{
+							title: '246', // a property!
+							start: '2021-02-14', // a property!
+							allDay: true,
+						},
+						{
+							title: '246', // a property!
+							start: '2021-02-15', // a property!
+							allDay: true,
+						},
+						{
+							title: '245', // a property!
+							start: '2021-02-16', // a property!
+							allDay: true,
+						},
+						{
+							title: '244', // a property!
+							start: '2021-02-17', // a property!
+							allDay: true,
+						},
+						{
+							title: '244', // a property!
+							start: '2021-02-18', // a property!
+							allDay: true,
+						},
+						{
+							title: '243', // a property!
+							start: '2021-02-19', // a property!
+							allDay: true,
+						},
+					],
+				});
+				calendar.render();
+			});
+		</script>
+	</head>
+	<body>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo"><i class="material-icons left">calendar_today</i></a>
+				<ul class="right hide-on-med-and-down">
+					<li>
+						<a href="#"><i class="material-icons left">tungsten</i>Daily motivation</a>
+					</li>
+					<li>
+						<a href="#"><i class="material-icons left">search</i>Search for recipies</a>
+					</li>
+					<li>
+						<a href="#"><i class="material-icons left">admin_panel_settings</i>Admin</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div id="calendar"></div>
+	</body>
+</html>

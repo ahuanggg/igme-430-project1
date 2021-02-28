@@ -13,14 +13,17 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahuanggg/random-joke.git"
+    "url": "git+https://github.com/ahuanggg/igme-430-project1.git"
   },
   "bugs": {
     "url": "https://github.com/ahuanggg/random-joke/issues"
   },
   "homepage": "https://github.com/ahuanggg/random-joke#readme",
   "description": "",
-  "dependencies": {},
+  "dependencies": {
+    "fullcalendar": "^5.5.1",
+    "tooltip": "^1.6.1"
+  },
   "devDependencies": {
     "eslint": "^7.19.0",
     "eslint-config-airbnb": "^18.2.1",
