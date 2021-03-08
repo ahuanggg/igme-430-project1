@@ -16,13 +16,13 @@
 	<body>
 		<nav>
 			<div class="nav-wrapper">
-				<a href="home.html" class="brand-logo"><i class="material-icons left">calendar_today</i></a>
+				<a href="/" class="brand-logo"><i class="material-icons left">calendar_today</i></a>
 				<ul class="right hide-on-med-and-down">
 					<li>
 						<a href="motivation.html"><i class="material-icons left">tungsten</i>Daily motivation</a>
 					</li>
 					<li>
-						<a href="#"><i class="material-icons left">search</i>Search for recipies</a>
+						<a href="#"><i class="material-icons left">build</i>Suggestions</a>
 					</li>
 					<li>
 						<a href="admin.html"><i class="material-icons left">admin_panel_settings</i>Admin</a>
@@ -30,7 +30,24 @@
 				</ul>
 			</div>
 		</nav>
-		// need to add search bar
-		<h2>this is the recipe page</h2>
+
+		<div>
+			<div class="row">
+				<form class="col s12" id="suggestion-form">
+					<div class="row">
+						<div class="suggestion-textbox" class="input-field col s8">
+							<input id="name" type="text" class="validate" />
+							<label for="name">First and Last Name</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="suggestion-textbox" class="input-field col s8">
+							<textarea id="textarea1" class="materialize-textarea"></textarea>
+							<label for="quote">Enter your quote that motivates you!</label>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>

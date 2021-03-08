@@ -57,7 +57,8 @@ const getRandomQuote = (limit = 1) => {
 	const result = [];
 	const quotes = [
 		{
-			m: 'All our dreams can come true, if we have the courage to pursue them. – Walt Disney',
+			m: 'All our dreams can come true, if we have the courage to pursue them.',
+			name: 'Walt Disney',
 		},
 		{
 			m: 'The secret of getting ahead is getting started. – Mark Twain',

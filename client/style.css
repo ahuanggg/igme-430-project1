@@ -19,14 +19,65 @@ html {
 	background-color: rgb(109, 104, 104);
 }
 
+/* CSS for motivation page */
 #motivation-div {
-	padding-top: 5em;
+	padding-top: 15em;
 }
 
 #message-div {
-	padding-top: 10em;
+	padding-top: 5em;
+	font-size: x-large;
+	width: 75%;
+	margin: auto;
 }
 
 #quotebtn {
 	color: white;
+}
+
+#quotebtn2 {
+	background-color: rgb(109, 104, 104);
+}
+
+/* CSS for admin page */
+
+#admin-div {
+	padding: 25px;
+}
+#getAllBtn {
+	color: white;
+}
+#quoteDiv {
+	display: none;
+	border-style: inset;
+	width: 75%;
+	margin: auto;
+	padding: 10px;
+}
+#outterQuoteDiv {
+	padding-top: 25px !important;
+}
+#btnDiv {
+	padding-bottom: ;
+	background-color: rgb(109, 104, 104);
+}
+
+/* Suggestion CSS */
+#suggestion-form {
+	margin: auto;
+}
+
+.suggestion-textbox {
+	padding: 20px !important;
+	width: 75%;
+	left: 25%;
+	margin: auto;
+}
+
+.suggestion-textbox label {
+	color: rgb(97, 97, 97);
+}
+
+.suggestion-textbox label:focus {
+	color: rgb(163, 39, 39) !important;
 }

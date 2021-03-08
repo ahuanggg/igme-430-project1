@@ -1,10 +1,11 @@
 const fs = require('fs');
+const { get } = require('http');
 
 const home = fs.readFileSync(`${__dirname}/../client/home.html`);
 const error = fs.readFileSync(`${__dirname}/../client/error.html`);
 const css = fs.readFileSync(`${__dirname}/../client/style.css`);
 const motivation = fs.readFileSync(`${__dirname}/../client/motivation.html`);
-const recipe = fs.readFileSync(`${__dirname}/../client/recipe.html`);
+const suggestion = fs.readFileSync(`${__dirname}/../client/suggestions.html`);
 const admin = fs.readFileSync(`${__dirname}/../client/admin.html`);
 const dog = fs.readFileSync(`${__dirname}/../client/dog.jpg`);
 
@@ -41,9 +42,9 @@ const getDog = (request, response) => {
 	response.write(dog);
 	response.end();
 };
-const getRecipe = (request, response) => {
+const getSuggestion = (request, response) => {
 	response.writeHead(200, { 'Content-Type': 'text/html' });
-	response.write(recipe);
+	response.write(suggestion);
 	response.end();
 };
 
@@ -71,7 +72,7 @@ module.exports.getHome = getHome;
 module.exports.getMotivation = getMotivation;
 module.exports.getDog = getDog;
 module.exports.getAdmin = getAdmin;
-module.exports.getRecipe = getRecipe;
+module.exports.getSuggestion = getSuggestion;
 
 //for the calender
 module.exports.getCalCSS = getCalCSS;

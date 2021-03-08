@@ -33,19 +33,25 @@
 								// prompts user for date, weight, and how they are feeling (description)
 								let dateStr = prompt('Enter a date in YYYY-MM-DD format');
 								let weightStr = prompt('Enter a weight in pounds');
+								let isnum = /^\d+$/.test(weightStr); //test of weightstr is all ints
+								console.log(isnum);
 
 								let date = new Date(dateStr + 'T00:00:00');
 
 								if (!isNaN(date.valueOf())) {
-									// valid? if true then add event
-									calendar.addEvent({
-										title: weightStr,
-										start: date,
-										allDay: true,
-									});
-								} else {
+									if (isnum) {
+										// valid? if true then add event
+										calendar.addEvent({
+											title: weightStr,
+											start: date,
+											allDay: true,
+										});
+									}
+								} else if (isNaN(date.valueOf())) {
 									// if not valid date then tell them
 									alert('Invalid date.');
+								} else if (!isnum) {
+									alert('Invalid weight.');
 								}
 							},
 						},
@@ -54,52 +60,42 @@
 					events: [
 						{
 							title: '250', // a property!
-							start: '2021-02-10', // a property!
+							start: '2021-03-01', // a property!
 							allDay: true,
 						},
 						{
 							title: '249', // a property!
-							start: '2021-02-11', // a property!
+							start: '2021-03-02', // a property!
 							allDay: true,
 						},
 						{
 							title: '248', // a property!
-							start: '2021-02-12', // a property!
+							start: '2021-03-03', // a property!
 							allDay: true,
 						},
 						{
 							title: '247', // a property!
-							start: '2021-02-13', // a property!
+							start: '2021-03-04', // a property!
 							allDay: true,
 						},
 						{
 							title: '246', // a property!
-							start: '2021-02-14', // a property!
+							start: '2021-03-05', // a property!
 							allDay: true,
 						},
 						{
 							title: '246', // a property!
-							start: '2021-02-15', // a property!
+							start: '2021-03-06', // a property!
 							allDay: true,
 						},
 						{
 							title: '245', // a property!
-							start: '2021-02-16', // a property!
+							start: '2021-03-07', // a property!
 							allDay: true,
 						},
 						{
 							title: '244', // a property!
-							start: '2021-02-17', // a property!
-							allDay: true,
-						},
-						{
-							title: '244', // a property!
-							start: '2021-02-18', // a property!
-							allDay: true,
-						},
-						{
-							title: '243', // a property!
-							start: '2021-02-19', // a property!
+							start: '2021-03-08', // a property!
 							allDay: true,
 						},
 					],
@@ -117,7 +113,7 @@
 						<a href="motivation.html"><i class="material-icons left">tungsten</i>Daily motivation</a>
 					</li>
 					<li>
-						<a href="recipe.html"><i class="material-icons left">search</i>Search for recipies</a>
+						<a href="suggestions.html"><i class="material-icons left">build</i>Suggestions</a>
 					</li>
 					<li>
 						<a href="admin.html"><i class="material-icons left">admin_panel_settings</i>Admin</a>

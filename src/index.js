@@ -12,12 +12,12 @@ const responseHandler = require('./responses.js');
 
 const urlStruct = {
 	'/random-quote': responseHandler.getRandomQuoteResponse,
-	'/home.html': htmlHandler.getHome,
+	'/': htmlHandler.getHome,
 	'/style.css': htmlHandler.getCSS,
 	'/motivation.html': htmlHandler.getMotivation,
 	'/dog.jpg': htmlHandler.getDog,
 	'/admin.html': htmlHandler.getAdmin,
-	'/recipe.html': htmlHandler.getRecipe,
+	'/suggestions.html': htmlHandler.getSuggestion,
 
 	//for the calander css and js
 	'/full-cal-css.css': htmlHandler.getCalCSS,
@@ -39,7 +39,7 @@ const onRequest = (request, response) => {
 	const params = query.parse(parsedUrl.query);
 	// const { limit } = params;
 
-	if (pathname === '/home.html') {
+	if (pathname === '/') {
 		urlStruct[pathname](request, response);
 	} else if (pathname === '/style.css') {
 		urlStruct[pathname](request, response);
@@ -49,7 +49,7 @@ const onRequest = (request, response) => {
 		urlStruct[pathname](request, response);
 	} else if (pathname === '/admin.html') {
 		urlStruct[pathname](request, response);
-	} else if (pathname === '/recipe.html') {
+	} else if (pathname === '/suggestions.html') {
 		urlStruct[pathname](request, response);
 	} else if (pathname === '/random-quote') {
 		urlStruct[pathname](request, response, params, acceptedTypes, httpMethod);

@@ -35,14 +35,13 @@
 				// `;
 			};
 
-			const downloadJoke = (e) => {
+			const downloadMotivation = (e) => {
 				// remember that an `Event` object gets passed along every time that an event handler or listener calls a function
 				// the `target` property of that event points at the element that sent the event, in this case a button
 				console.log(`An element of id=${e.target.id} was clicked!`);
 
 				let quoteURL = '';
 
-				// check if single joke or many jokes
 				if (e.target.id === 'quotebtn') {
 					quoteURL = '/random-quote';
 				}
@@ -58,10 +57,10 @@
 
 			const init = () => {
 				// An Event *Handler*
-				// document.querySelector("#btnJoke").onclick = downloadJoke; // same as below, less typing, use which ever version you prefer
+				// document.querySelector("#btnJoke").onclick = downloadMotivation; // same as below, less typing, use which ever version you prefer
 
 				// An Event *Listener*
-				document.querySelector('#quotebtn').addEventListener('click', downloadJoke);
+				document.querySelector('#quotebtn').addEventListener('click', downloadMotivation);
 
 				// **Actually, event handlers and listeners are NOT exactly the same in all use cases - what ARE the differences?**
 			};
@@ -72,13 +71,13 @@
 	<body>
 		<nav>
 			<div class="nav-wrapper">
-				<a href="home.html" class="brand-logo"><i class="material-icons left">calendar_today</i></a>
+				<a href="/" class="brand-logo"><i class="material-icons left">calendar_today</i></a>
 				<ul class="right hide-on-med-and-down">
 					<li>
 						<a href="#"><i class="material-icons left">tungsten</i>Daily motivation</a>
 					</li>
 					<li>
-						<a href="recipe.html"><i class="material-icons left">search</i>Search for recipies</a>
+						<a href="suggestions.html"><i class="material-icons left">build</i>Suggestions</a>
 					</li>
 					<li>
 						<a href="admin.html"><i class="material-icons left">admin_panel_settings</i>Admin</a>
@@ -88,9 +87,11 @@
 		</nav>
 
 		<div class="center-align" id="motivation-div">
-			<div class="waves-effect waves-light btn-large">
-				<a id="quotebtn"><i class="material-icons left">tungsten</i>Motivate me!</a>
-			</div>
+			<button class="waves-effect waves-light btn-large" id="quotebtn2">
+				<span>
+					<a id="quotebtn"><i class="material-icons left">tungsten</i>Motivate me!</a>
+				</span>
+			</button>
 			<div class="center-align" id="message-div"></div>
 		</div>
 	</body>
