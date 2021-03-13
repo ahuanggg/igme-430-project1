@@ -15,7 +15,7 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
 		<script>
-			let eventsid = 'ah6595-events';
+			//let eventsid = 'events';
 			let events = [
 				{
 					title: '250', // a property!
@@ -52,22 +52,33 @@
 					start: '2021-03-07', // a property!
 					allDay: true,
 				},
-				{
-					title: '244', // a property!
-					start: '2021-03-08', // a property!
-					allDay: true,
-				},
 			];
+
+			let test;
+			function init() {
+				// localStorage.setItem('test', 'testing ');
+				// test = localStorage.getItem('test');
+				// console.log(test);
+				// test += 'a';
+				// localStorage.setItem('test', test);
+				// test = localStorage.getItem('test');
+				// console.log(test);
+				// //see if local storage and this is up to date
+				// events = localStorage.getItem('events');
+				// console.log(events);
+				// events = JSON.parse(events);
+				// console.log(events);
+			}
 
 			document.addEventListener('DOMContentLoaded', function () {
 				//setting events to local storage
-
 				let eventsStr = JSON.stringify(events);
-				localStorage.setItem(eventsid, eventsStr);
+				localStorage.setItem('events', eventsStr);
 
-				//see if local storage and this is up to date
-				events = localStorage.getItem(eventsid);
+				events = localStorage.getItem('events');
+				console.log(events);
 				events = JSON.parse(events);
+				console.log(events);
 
 				let calendarEl = document.querySelector('#calendar');
 				let calendar = new FullCalendar.Calendar(calendarEl, {
@@ -87,7 +98,6 @@
 								let dateStr = prompt('Enter a date in YYYY-MM-DD format');
 								let weightStr = prompt('Enter a weight in pounds');
 								let isnum = /^\d+$/.test(weightStr); //test of weightstr is all ints
-								console.log(isnum);
 
 								let date = new Date(dateStr + 'T00:00:00');
 
@@ -95,9 +105,13 @@
 									if (isnum) {
 										//valid? add to local storage
 										events.push({ title: weightStr, start: date, allDay: true });
-										eventsStr = JSON.stringify(events);
-										localStorage.setItem(eventsid, eventsStr);
 										console.log(events);
+										let eventsStr2 = JSON.stringify(events);
+										console.log(eventsStr2);
+										localStorage.setItem('events', eventsStr2);
+										console.log(test);
+										localStorage.setItem('test', test);
+										//console.log(events);
 										// valid? if true then add event
 										calendar.addEvent({
 											title: weightStr,
@@ -119,6 +133,8 @@
 				});
 				calendar.render();
 			});
+
+			window.onload = init;
 		</script>
 	</head>
 	<body>
