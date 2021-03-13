@@ -72,8 +72,6 @@
 
 			document.addEventListener('DOMContentLoaded', function () {
 				//setting events to local storage
-				let eventsStr = JSON.stringify(events);
-				localStorage.setItem('events', eventsStr);
 
 				events = localStorage.getItem('events');
 				console.log(events);

@@ -11,7 +11,71 @@
 		<!--Import Google Icon Font-->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-		<script></script>
+		<script>
+			const handleResponse = (e) => {
+				
+				const xhr = e.target;
+				const content = document.querySelector('#content');
+				console.dir(xhr.status)
+
+				switch (xhr.status) {
+					case 200:
+						content.innerHTML = '<b>Success!</b>';
+						break;
+					case 201:
+						content.innerHTML = '<b>Created!</b>';
+						break;
+					case 204:
+						content.innerHTML = '<b>Updated (No Content)!</b>';
+						break;
+					case 400:
+						content.innerHTML = '<b>Bad Request!</b>';
+						break;
+					default:
+						content.innerHTML = '<b>Error code not implemented by client</b>';
+				}
+
+				// make sure that something is in the .response property first!
+				// const obj = xhr.response && JSON.parse(xhr.response);
+				// console.dir(obj);
+				// if (obj.message) {
+				// 	content.innerHTML += `<p>id = ${obj.id}</p><p>message = ${obj.message}</p>`;
+				// }
+			};
+
+			const sendPost = (e) => {
+				// "kill" the default behavior of the form (reloading the page it's on)
+				e.preventDefault();
+
+				const suggestionform = e.target;
+				// pull the `action` and `method` from the form (we could have just hard-coded these)
+				const nameAction = '/add-quote';
+				const nameMethod = 'POST';
+
+				const quoteField = suggestionform.querySelector('#quote');
+				const nameField = suggestionform.querySelector('#name');
+
+				const formData = `quote=${quoteField.value}&name=${nameField.value}`;
+				
+				const xhr = new XMLHttpRequest();
+				xhr.onload = handleResponse;
+				xhr.open(nameMethod, nameAction); // NEW - in the past we've been using "GET"
+
+				xhr.setRequestHeader('Accept', 'application/json')
+				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				// console.dir('bout to send')
+				xhr.send(formData);
+				
+
+				return false; // prevents event bubbling
+			};
+
+			const init = () => {
+				document.querySelector('#suggestionform').onsubmit = sendPost;
+			};
+
+			window.onload = init;
+		</script>
 	</head>
 	<body>
 		<nav>
@@ -33,26 +97,33 @@
 
 		<div>
 			<div class="row">
-				<form class="col s12" id="suggestion-form">
+				<form class="col s12" id="suggestionform" method="POST">
 					<div class="row">
 						<div class="suggestion-textbox" class="input-field col s8">
-							<input id="name" type="text" class="validate" />
+							<input id="name" type="text" name="name" />
 							<label for="name">First and Last Name</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="suggestion-textbox" class="input-field col s8">
-							<textarea id="textarea1" class="materialize-textarea"></textarea>
+							<input id="quote" name="quote" ></input>
 							<label for="quote">Enter your quote that motivates you!</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col s4 offset-s8">
-							<button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+							<button class="btn waves-effect waves-light" type="submit">Submit</button>
 						</div>
 					</div>
 				</form>
+				
 			</div>
 		</div>
+		<div class="row">
+			<div class="col s4 offset-s8">
+				<div id="content"></div>
+			</div>
+		</div>
+		
 	</body>
 </html>

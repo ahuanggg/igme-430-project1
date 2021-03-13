@@ -32,9 +32,9 @@ html {
 	margin: auto;
 }
 
-#quotebtn {
+.quotebtn {
 	color: white;
-	background-color: rgb(109, 104, 104);
+	background-color: rgb(109, 104, 104) !important;
 	padding: 10px;
 	height: auto;
 	width: auto;
@@ -59,6 +59,7 @@ html {
 	border-style: inset;
 	width: 75%;
 	margin: auto;
+	padding: 10px;
 }
 
 #outterQuoteDiv {
@@ -69,7 +70,7 @@ html {
 }
 
 /* Suggestion CSS */
-#suggestion-form {
+#suggestionform {
 	margin: auto;
 }
 

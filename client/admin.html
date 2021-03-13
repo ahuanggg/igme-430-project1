@@ -13,10 +13,10 @@
 
 		<script>
 			const handleResponse = (e) => {
-				console.log('e.target = ', e.target); // here, 'e.target' is the 'xhr' object
-				console.log('e.target.response = ', e.target.response); // so that means this is a string of "joke" JSON
+				//console.log('e.target = ', e.target); // here, 'e.target' is the 'xhr' object
+				//console.log('e.target.response = ', e.target.response); // so that means this is a string of "joke" JSON
 				const obj = JSON.parse(e.target.response); // turn it back into an object
-				console.log('obj = ', obj);
+				//console.log('obj = ', obj);
 				// now go ahead and update #quoteContainer with the contents of the joke
 				let quoteContainer = document.querySelector('#quoteDiv');
 				quoteContainer.style.display = 'inline-block';
@@ -25,7 +25,8 @@
 				quoteContainer.innerHTML = '';
 				for (let i = 0; i < obj.length; i++) {
 					quoteContainer.innerHTML += `
-                    <p><b>${obj[i].m}</b></p>
+                    <p><b>${obj[i].quote}</b></p>
+					<p><i>${obj[i].name}</i></p>
                     `;
 				}
 
@@ -87,11 +88,9 @@
 		</nav>
 
 		<div class="center-align" id="admin-div">
-			<button id="btnDiv" class="waves-effect waves-light btn-large">
-				<a id="getAllbtn">Get all motivational</a>
-			</button>
+			<button id="getAllbtn" class="quotebtn waves-effect waves-light btn-large">Get all motivational</button>
 			<div id="outterQuoteDiv">
-				<div class="center-align" id="quoteDiv"></div>
+				<div class="left-align" id="quoteDiv"></div>
 			</div>
 		</div>
 	</body>

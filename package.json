@@ -6,7 +6,8 @@
     "pretest": "eslint ./src --fix",
     "test": "echo \"Tests complete\"",
     "nodemon": "nodemon ./src/index.js -e js,html,css",
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "chromeinspect": "echo \"Now in DEBUG mode. Head to 'chrome://inspect'\";node --inspect ./src/index.js"
   },
   "keywords": [],
   "author": "",
