@@ -13,6 +13,8 @@
     "rules": {
         "no-param-reassign" : 0,
         "no-plusplus": 0,
-        "no-tabs" : 1
+        "no-tabs" : 1,
+        "no-unused-vars": 1,
+        "no-restricted-syntax": 1
     }
 }

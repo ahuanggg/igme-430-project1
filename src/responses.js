@@ -181,8 +181,8 @@ const addQuote = (request, response, body) => {
 
 	if (quotes.some((quote) => quote.name === body.name)) {
 		responseCode = 204;
-		//looops thru quotes and finds the user and updates it
-		for (let quote of quotes) {
+		// looops thru quotes and finds the user and updates it
+		for (const quote of quotes) {
 			if (quote.name === body.name) {
 				quote.name = body.name;
 				quote.quote = body.quote;
@@ -198,7 +198,7 @@ const addQuote = (request, response, body) => {
 		// console.dir(responseCode);
 		return respondJSON(request, response, responseCode, responseJSON);
 	}
-	console.dir(responseCode);
+	// console.dir(responseCode);
 	return respondJSONmeta(request, response, responseCode);
 };
 

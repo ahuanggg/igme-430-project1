@@ -7,9 +7,9 @@ const query = require('querystring');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
+// const { parse } = require('path');
 const htmlHandler = require('./htmlResponses.js');
 const responseHandler = require('./responses.js');
-const { parse } = require('path');
 
 const handlePost = (request, response, parsedUrl) => {
 	// console.dir('in handle');
@@ -19,9 +19,9 @@ const handlePost = (request, response, parsedUrl) => {
 
 		request.on('error', (err) => {
 			// console.dir('in err');
-			// console.dir(err);
-			repsonse.statusCode = 400;
-			repsonse.end;
+			console.dir(err);
+			response.statusCode = 400;
+			response.end();
 		});
 
 		request.on('data', (chunk) => {
@@ -64,7 +64,7 @@ const onRequest = (request, response) => {
 	const parsedUrl = url.parse(request.url);
 	const { pathname } = parsedUrl;
 
-	//handle POST
+	// handle POST
 	if (request.method === 'POST') {
 		// console.dir('in post');
 		handlePost(request, response, parsedUrl);
