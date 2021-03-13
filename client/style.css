@@ -46,8 +46,19 @@ html {
 	background-color: rgb(109, 104, 104);
 }
 
+#extrabutton {
+	color: white;
+	background-color: rgb(109, 104, 104) !important;
+	padding: 10px;
+	height: auto;
+	width: auto;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#linkcolor {
+	color: white;
+}
 /* CSS for admin page */
-
 #admin-div {
 	padding: 25px;
 }

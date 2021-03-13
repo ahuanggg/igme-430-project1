@@ -11,6 +11,7 @@ const port = process.env.PORT || process.env.NODE_PORT || 3000;
 const htmlHandler = require('./htmlResponses.js');
 const responseHandler = require('./responses.js');
 
+// fucntion to hnadle post
 const handlePost = (request, response, parsedUrl) => {
 	// console.dir('in handle');
 	// console.dir(parsedUrl.pathname);
@@ -58,6 +59,7 @@ const urlStruct = {
 	notFound: htmlHandler.getError,
 };
 
+//fucntion to handle on request
 const onRequest = (request, response) => {
 	// console.log(request.headers);
 

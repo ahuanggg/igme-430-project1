@@ -76,7 +76,7 @@ const shuffle = (array) => {
 	return array;
 };
 
-// function to handle response
+// functions to handle response
 const respond = (request, response, status, content, type) => {
 	response.writeHead(status, { 'Content-Type': type });
 	response.write(content);
@@ -104,7 +104,7 @@ const JSONtoXML = (arr) => {
 	let responseXML = '</motivation>';
 
 	for (let x = 0; x < arr.length; x++) {
-		const str = `<quote> \n <m> ${arr[x].m} </m> \n </quote> `;
+		const str = `<quote>\n${arr[x].quote}\n</quote><name>\n${arr[x].name}\n</name>`;
 		// console.log(str);
 		responseXML += str;
 		// console.log(responseXML);
@@ -145,6 +145,7 @@ const getRandomQuote = (limit = 1) => {
 	return result;
 };
 
+// fucntion to get random quote when asked
 const getRandomQuoteResponse = (request, response, params, acceptedTypes, httpMethod) => {
 	// check that text/xml is in the acceptedTypes array with array.includes
 	// console.log(acceptedTypes);
@@ -167,9 +168,10 @@ const getRandomQuoteResponse = (request, response, params, acceptedTypes, httpMe
 	}
 };
 
+// function to add quotes
 const addQuote = (request, response, body) => {
 	const responseJSON = {
-		message: 'Name and Quote required',
+		message: 'quote and name required',
 	};
 
 	if (!body.name || !body.quote) {

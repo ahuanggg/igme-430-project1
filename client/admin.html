@@ -12,6 +12,9 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
 		<script>
+			let count = 0;
+
+			//functuin to handle responses
 			const handleResponse = (e) => {
 				//console.log('e.target = ', e.target); // here, 'e.target' is the 'xhr' object
 				//console.log('e.target.response = ', e.target.response); // so that means this is a string of "joke" JSON
@@ -36,24 +39,29 @@
 				// `;
 			};
 
+			//fucntion to download all motiations
 			const downloadMotivation = (e) => {
 				// remember that an `Event` object gets passed along every time that an event handler or listener calls a function
 				// the `target` property of that event points at the element that sent the event, in this case a button
-				console.log(`An element of id=${e.target.id} was clicked!`);
+				// console.log(`An element of id=${e.target.id} was clicked!`);
 
-				let quoteURL = '';
+				//make sure that they can only click it once
+				if (count === 0) {
+					count += 1;
+					let quoteURL = '';
 
-				if (e.target.id === 'getAllbtn') {
-					quoteURL = '/random-quote?limit=100';
+					if (e.target.id === 'getAllbtn') {
+						quoteURL = '/random-quote?limit=100';
+					}
+
+					const xhr = new XMLHttpRequest();
+					xhr.onload = handleResponse;
+					xhr.open('GET', quoteURL);
+					// with XHR, after we open a connect, but before we 'send()', we can set 1 or more HTTP request headers
+					// this isn't strictly necessary because '/random-joke' sends JSON by default
+					xhr.setRequestHeader('Accept', 'application/javascript');
+					xhr.send();
 				}
-
-				const xhr = new XMLHttpRequest();
-				xhr.onload = handleResponse;
-				xhr.open('GET', quoteURL);
-				// with XHR, after we open a connect, but before we 'send()', we can set 1 or more HTTP request headers
-				// this isn't strictly necessary because '/random-joke' sends JSON by default
-				xhr.setRequestHeader('Accept', 'application/javascript');
-				xhr.send();
 			};
 
 			const init = () => {

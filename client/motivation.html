@@ -12,6 +12,7 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
 		<script>
+			//function to hnadle response
 			const handleResponse = (e) => {
 				console.log('e.target = ', e.target); // here, 'e.target' is the 'xhr' object
 				console.log('e.target.response = ', e.target.response); // so that means this is a string of "joke" JSON
@@ -36,6 +37,7 @@
 				// `;
 			};
 
+			// fucntion to download motivation
 			const downloadMotivation = (e) => {
 				// remember that an `Event` object gets passed along every time that an event handler or listener calls a function
 				// the `target` property of that event points at the element that sent the event, in this case a button
@@ -93,6 +95,10 @@
 				<i class="material-icons left">tungsten</i>
 			</button>
 			<div class="center-align" id="message-div"></div>
+		</div>
+
+		<div class="center-align" id="motivation-div">
+			<button id="extrabutton" class="quotebtn btn waves-effect waves-light"><a id="linkcolor" href="/dog.jpg">Click for extra motivation!</a></button>
 		</div>
 	</body>
 </html>
