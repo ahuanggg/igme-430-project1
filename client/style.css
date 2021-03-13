@@ -11,8 +11,9 @@ html {
 	padding-top: 2em;
 }
 
-.brand-logo {
+#logo {
 	left: 1em;
+	position: absolute;
 }
 
 .nav-wrapper {
@@ -33,6 +34,12 @@ html {
 
 #quotebtn {
 	color: white;
+	background-color: rgb(109, 104, 104);
+	padding: 10px;
+	height: auto;
+	width: auto;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 #quotebtn2 {
@@ -52,8 +59,8 @@ html {
 	border-style: inset;
 	width: 75%;
 	margin: auto;
-	padding: 10px;
 }
+
 #outterQuoteDiv {
 	padding-top: 25px !important;
 }
@@ -79,4 +86,8 @@ html {
 
 .suggestion-textbox label:focus {
 	color: rgb(163, 39, 39) !important;
+}
+
+input :focus {
+	color: black;
 }

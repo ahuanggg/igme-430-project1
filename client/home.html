@@ -15,7 +15,60 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
 		<script>
+			let eventsid = 'ah6595-events';
+			let events = [
+				{
+					title: '250', // a property!
+					start: '2021-03-01', // a property!
+					allDay: true,
+				},
+				{
+					title: '249', // a property!
+					start: '2021-03-02', // a property!
+					allDay: true,
+				},
+				{
+					title: '248', // a property!
+					start: '2021-03-03', // a property!
+					allDay: true,
+				},
+				{
+					title: '247', // a property!
+					start: '2021-03-04', // a property!
+					allDay: true,
+				},
+				{
+					title: '246', // a property!
+					start: '2021-03-05', // a property!
+					allDay: true,
+				},
+				{
+					title: '246', // a property!
+					start: '2021-03-06', // a property!
+					allDay: true,
+				},
+				{
+					title: '245', // a property!
+					start: '2021-03-07', // a property!
+					allDay: true,
+				},
+				{
+					title: '244', // a property!
+					start: '2021-03-08', // a property!
+					allDay: true,
+				},
+			];
+
 			document.addEventListener('DOMContentLoaded', function () {
+				//setting events to local storage
+
+				let eventsStr = JSON.stringify(events);
+				localStorage.setItem(eventsid, eventsStr);
+
+				//see if local storage and this is up to date
+				events = localStorage.getItem(eventsid);
+				events = JSON.parse(events);
+
 				let calendarEl = document.querySelector('#calendar');
 				let calendar = new FullCalendar.Calendar(calendarEl, {
 					initialView: 'dayGridMonth', //sets the view
@@ -40,6 +93,11 @@
 
 								if (!isNaN(date.valueOf())) {
 									if (isnum) {
+										//valid? add to local storage
+										events.push({ title: weightStr, start: date, allDay: true });
+										eventsStr = JSON.stringify(events);
+										localStorage.setItem(eventsid, eventsStr);
+										console.log(events);
 										// valid? if true then add event
 										calendar.addEvent({
 											title: weightStr,
@@ -57,48 +115,7 @@
 						},
 					},
 					//adding some custom events
-					events: [
-						{
-							title: '250', // a property!
-							start: '2021-03-01', // a property!
-							allDay: true,
-						},
-						{
-							title: '249', // a property!
-							start: '2021-03-02', // a property!
-							allDay: true,
-						},
-						{
-							title: '248', // a property!
-							start: '2021-03-03', // a property!
-							allDay: true,
-						},
-						{
-							title: '247', // a property!
-							start: '2021-03-04', // a property!
-							allDay: true,
-						},
-						{
-							title: '246', // a property!
-							start: '2021-03-05', // a property!
-							allDay: true,
-						},
-						{
-							title: '246', // a property!
-							start: '2021-03-06', // a property!
-							allDay: true,
-						},
-						{
-							title: '245', // a property!
-							start: '2021-03-07', // a property!
-							allDay: true,
-						},
-						{
-							title: '244', // a property!
-							start: '2021-03-08', // a property!
-							allDay: true,
-						},
-					],
+					events,
 				});
 				calendar.render();
 			});
@@ -107,8 +124,8 @@
 	<body>
 		<nav>
 			<div class="nav-wrapper">
-				<a href="#" class="brand-logo"><i class="material-icons left">calendar_today</i></a>
-				<ul class="right hide-on-med-and-down">
+				<a href="#" id="logo"><i class="material-icons left">calendar_today</i></a>
+				<ul class="right">
 					<li>
 						<a href="motivation.html"><i class="material-icons left">tungsten</i>Daily motivation</a>
 					</li>
